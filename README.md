@@ -21,16 +21,32 @@ The cluster consists of 2 nodes.
 -   Worker node (cluster-worker01)
     -   Worker node that runs the workloads. Runs Pods with the containerized applications
 
-## Diagram (WIP)
+## Overview (WIP)
 
 <img src="doc/cluster-diagram_WIP.png" >
 
-# Deployments
+# Cluster
 
-## Pi-Hole
+## Deployment flow (WIP)
 
-Network service that will act as DNS server in my local network. Pi-Hole provides capabilities such as network-wide blocking of ads, telemetry and malware by rerouting network traffic
+<img src="doc/deployment-flow_WIP.png" >
 
-## Prometheus + Grafana
+## Deployments
 
-Open-source monitoring and alerting solution that will be used for monitoring of the cluster's overall health by using metrics such as RAM and CPU usage from each node.
+### Pi-Hole
+
+Network service that will act as DNS server in my local network. Pi-Hole provides capabilities such as network-wide blocking of ads, telemetry and malware by rerouting network traffic.
+
+### Prometheus + Grafana
+
+Prometheus is Open-source monitoring and alerting solution that will be used for monitoring of the cluster's overall health by using metrics such as RAM and CPU usage from each node.
+
+### Flux (CD)
+
+A open-source set of continuous delivery solutions for Kubernetes and will be used to handle the deployments to the cluster. Flux will listen for changes to a deployment git repository and then sync the state between the repository, containing the manifests describing the cluster state, and the cluster. Flux supports a pull model, which is ideal for this cluster, since it runs on a private network and is not directly exposed to the internet.
+
+### nordnet-fetch
+
+My python script for fetching Nordnet account data such as transactions and performance graph data, and store the data in GCP BigQuery. The script will be deployed in the cluster as a CronJob that runs daily.
+
+## Configuration Management

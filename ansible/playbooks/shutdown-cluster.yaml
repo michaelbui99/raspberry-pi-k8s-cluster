@@ -1,0 +1,7 @@
+- name: "Shutdown cluster"
+  hosts: "all"
+  become: true
+  tasks:
+      - name: "Power off"
+        shell:
+            cmd: sudo poweroff
