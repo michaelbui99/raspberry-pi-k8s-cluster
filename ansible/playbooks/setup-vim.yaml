@@ -1,0 +1,23 @@
+- name: "Setup vim"
+  hosts: "all"
+  become: true
+  tasks:
+      - name: "Install vim"
+        ansible.builtin.package:
+            name: vim
+            state: latest
+
+      - name: "vimrc"
+        shell:
+            cmd: |
+                cat << EOT >> ~/.vimrc
+                set number
+                set relativenumber
+                set ignorecase
+                set smartcase
+                set ignorecase
+                set smartcase
+                set tabstop=4
+                set softtabstop=4
+                set expandtab
+                EOT
