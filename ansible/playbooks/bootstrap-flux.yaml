@@ -1,0 +1,17 @@
+- name: "Bootstrap flux"
+  hosts: "masters"
+  vars:
+      GITHUB_TOKEN: ""
+  become: true
+  tasks:
+      - name: "Install Flux CLI"
+        shell:
+            cmd: curl -s https://fluxcd.io/install.sh | sudo bash
+
+      - name: "Set environment variable"
+        shell:
+            cmd: export GITHUB_TOKEN={{ GITHUB_TOKEN }}
+
+      - name: "Bootstrap"
+        shell:
+            cmd: flux bootstrap github --owner=michaelbui99 --repository=raspberry-pi-kubernetes-cluster --path=clusters/pi-cluster --personal
