@@ -2,11 +2,10 @@
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: GitRepository
 metadata:
-  name: prometheus-helm
-  namespace: flux-system
+    name: prometheus-helm
+    namespace: monitoring
 spec:
-  interval: 30m0s
-  ref:
-    branch: main
-  url: https://github.com/prometheus-community/helm-charts
-
+    interval: 30m0s
+    ref:
+        branch: main
+    url: https://github.com/prometheus-community/helm-charts
