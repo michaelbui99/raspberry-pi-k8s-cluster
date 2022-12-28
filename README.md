@@ -43,7 +43,7 @@ Prometheus is Open-source monitoring and alerting solution that will be used for
 
 ### Flux (CD)
 
-A open-source set of continuous delivery solutions for Kubernetes that will be used to handle the deployments to the cluster. Flux will listen for changes to a deployment git repository and then sync the state between the repository, containing the manifests describing the cluster state, and the cluster. Flux supports a pull model, which is ideal for this cluster, since it runs on a private network and is not directly exposed to the internet.
+A open-source set of continuous delivery solutions for Kubernetes that will be used to handle the deployments to the cluster. Flux will listen for changes to a deployment git repository and then sync the state between the repository, containing the manifests describing the cluster state, and the cluster. Flux supports a pull model, which is ideal for this cluster, since it runs on a private network and is not directly exposed to the internet. To deploy to the cluster, you just have to push a new manifest to <PROJECT_ROOT>/clusters/pi-cluster
 
 ### nordnet-fetch
 
