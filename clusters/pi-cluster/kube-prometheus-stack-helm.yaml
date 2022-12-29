@@ -12,4 +12,9 @@ spec:
             sourceRef:
                 kind: GitRepository
                 name: prometheus-helm
+    values:
+        grafana:
+            ingress:
+                enabled: true
+                path: /grafana
     interval: 30m0s
