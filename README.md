@@ -39,7 +39,9 @@ Network service that will act as DNS server in my local network. Pi-Hole provide
 
 ### Prometheus + Grafana
 
-Prometheus is Open-source monitoring and alerting solution that will be used for monitoring of the cluster's overall health by using metrics such as RAM and CPU usage from each node.
+Prometheus is open-source monitoring and alerting solution that will be used for monitoring of the cluster's overall health by using metrics such as RAM and CPU usage from each node. <br>
+Grafana is a open-source interactive data-visualization platform that will be used to visualize the metrics from Prometheus in form of various dashboards. <br>
+<img src="doc/grafana_nodes_dashboard.png" width=1500>
 
 ### Flux (CD)
 
