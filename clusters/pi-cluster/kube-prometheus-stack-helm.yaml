@@ -17,4 +17,8 @@ spec:
             ingress:
                 enabled: true
                 path: /grafana
+            grafana.ini:
+                server:
+                    domain: cluster-worker01.local
+                    root_url: http://cluster-worker01.local/grafana/
     interval: 30m0s
