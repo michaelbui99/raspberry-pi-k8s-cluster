@@ -20,5 +20,6 @@ spec:
             grafana.ini:
                 server:
                     domain: cluster-worker01.local
-                    root_url: http://cluster-worker01.local/grafana/
+                    root_url: "%(protocol)s://%(domain)s:%(http_port)s/grafana/"
+                    serve_from_sub_path: true
     interval: 30m0s
