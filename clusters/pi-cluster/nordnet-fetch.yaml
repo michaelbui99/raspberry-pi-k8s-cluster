@@ -4,7 +4,7 @@ metadata:
     name: nordnet-fetch
     namespace: nordnet-fetch
 spec:
-    schedule: "0 0 * * 5"
+    schedule: "0 0 * * 6"
     jobTemplate:
         spec:
             template:
@@ -12,7 +12,7 @@ spec:
                     containers:
                         - name: nordnet-fetch
                           image: michaelbui99/nordnet-fetch
-                          imagePullPolicy: IfNotPresent
+                          imagePullPolicy: Always
                     imagePullSecrets:
                         - name: docker-hub-cred
                     restartPolicy: OnFailure
