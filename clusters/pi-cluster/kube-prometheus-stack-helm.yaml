@@ -1,3 +1,14 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: GitRepository
+metadata:
+    name: prometheus-helm
+    namespace: monitoring
+spec:
+    interval: 30m0s
+    ref:
+        branch: main
+    url: https://github.com/prometheus-community/helm-charts
+
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
