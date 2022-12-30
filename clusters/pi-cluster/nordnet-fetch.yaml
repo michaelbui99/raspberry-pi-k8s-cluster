@@ -1,0 +1,18 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+    name: nordnet-fetch
+    namespace: nordnet-fetch
+spec:
+    schedule: "0 0 * * 5"
+    jobTemplate:
+        spec:
+            template:
+                spec:
+                    containers:
+                        - name: nordnet-fetch
+                          image: michaelbui99/nordnet-fetch
+                          imagePullPolicy: IfNotPresent
+                    imagePullSecrets:
+                        - name: docker-hub-cred
+                    restartPolicy: OnFailure
