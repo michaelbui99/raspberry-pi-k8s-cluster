@@ -3,6 +3,27 @@
 <br>
 <img src="doc/initial_cluster_setup.jpg" width="300">
 
+# Table of Contents
+
+-   [Raspberry Pi Kubernetes Cluster](#raspberry-pi-kubernetes-cluster)
+-   [Hardware](#hardware)
+-   [Architecture](#architecture)
+    -   [Overview (WIP)](#overview--wip-)
+-   [Cluster](#cluster)
+    -   [Deployment flow (WIP)](#deployment-flow--wip-)
+    -   [Deployments](#deployments)
+        -   [Flux (CD)](#flux--cd-)
+        -   [Prometheus + Grafana](#prometheus---grafana)
+        -   [nordnet-fetch](#nordnet-fetch)
+        -   [Pi-Hole](#pi-hole)
+    -   [Setup](#setup)
+        -   [Headless Raspberry Pi Setup](#headless-raspberry-pi-setup)
+        -   [Tailscale](#tailscale)
+        -   [Add local PC ssh keys as authorized keys in cluster nodes](#add-local-pc-ssh-keys-as-authorized-keys-in-cluster-nodes)
+        -   [k3s setup](#k3s-setup)
+        -   [Setup kubectl access to cluster from local PC](#setup-kubectl-access-to-cluster-from-local-pc)
+        -   [Bootstrap Flux and use it to deploy all other resources into the cluster.](#bootstrap-flux-and-use-it-to-deploy-all-other-resources-into-the-cluster)
+
 # Hardware
 
 -   2x Raspberry Pi Model B 8GB RAM + 16GB Micro SD
