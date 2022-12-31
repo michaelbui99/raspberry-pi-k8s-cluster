@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: discord-alerthandler-deployment
+    labels:
+        app: discord-alerthandler
+    namespace: monitoring
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: discord-alerthandler
+    template:
+        metadata:
+            labels:
+                app: discord-alerthandler
+        spec:
+            containers:
+                - name: discord-alerthandler
+                  image: michaelbui99/discord-alerthandler
+                  ports:
+                      - containerPort: 8089
+                        name: discord-alerthandler-port
+                  env:
+                      - name: DISCORD_WEBHOOK_URL
+                        valueFrom:
+                            secretKeyRef:
+                                name: discord-webhook
+                                key: url
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: discord-alerthandler-service
+    namespace: monitoring
+spec:
+    selector:
+        app: discord-alerthandler
+    ports:
+        - protocol: TCP
+          port: 80
+          targetPort: discord-alerthandler-port

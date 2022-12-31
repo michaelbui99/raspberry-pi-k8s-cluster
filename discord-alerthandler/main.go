@@ -23,11 +23,13 @@ func onAlert(w http.ResponseWriter, r *http.Request) {
 
 	bytes, _ := io.ReadAll(r.Body)
 
-	var receivedAlert alertmanager.AlertManagerDTO
-	json.Unmarshal(bytes, &receivedAlert)
+	var receivedAlertDTO alertmanager.AlertManagerDTO
+	json.Unmarshal(bytes, &receivedAlertDTO)
 
-	discordAlert := discord.BuildDiscordAlert(&receivedAlert)
-	discord.SendDiscordAlert(*&context, discordAlert)
+	for _, alert := range receivedAlertDTO.Alerts {
+		discordAlert := discord.BuildDiscordAlert(&alert)
+		discord.SendDiscordAlert(*&context, discordAlert)
+	}
 }
 
 func main() {

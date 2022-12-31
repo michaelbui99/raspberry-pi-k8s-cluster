@@ -3,6 +3,7 @@ package discord
 import (
 	"bytes"
 	"encoding/json"
+	"fmt"
 	"net/http"
 
 	"github.com/michaelbui99/discord-alerthandler/internal/alertmanager"
@@ -71,6 +72,12 @@ func SendDiscordAlert(context *context.Context, alert *DiscordAlert) {
 	http.Post(*&context.DiscordWebHookUrl, "application/json", bytes.NewReader(alertJson))
 }
 
-func BuildDiscordAlert(alert *alertmanager.AlertManagerDTO) *DiscordAlert {
-	return &DiscordAlert{}
+func BuildDiscordAlert(alert *alertmanager.AlertManagerAlert) *DiscordAlert {
+	embedAuthor := NewDiscordEmbedAuthor(fmt.Sprintf("Discord Alerthandler - %v - %v", alert.Labels["instance"], alert.Labels["job"]), "")
+	embed := NewDiscordEmbed("rich", fmt.Sprintf("[%v] %v", alert.Status, alert.Labels["alertname"]), alert.Annotations.Description, 0x00FFFF, alert.GeneratorURL, *embedAuthor)
+	embeds := []DiscordEmbed{*embed}
+	return &DiscordAlert{
+		Content: fmt.Sprintf("A new alert has been triggered: [%v] - [%v].", alert.StartsAt, alert.EndsAt),
+		Embeds:  embeds,
+	}
 }

@@ -33,4 +33,13 @@ spec:
                     domain: cluster-worker01.local
                     root_url: "%(protocol)s://%(domain)s:%(http_port)s/grafana/"
                     serve_from_sub_path: true
+        alertmanager:
+            config:
+                receivers:
+                    - name: "null"
+                    - name: "discord"
+                      webhook_configs:
+                          - send_resolved: true
+                            url: "discord-alerthandler:8089"
+
     interval: 30m0s
