@@ -71,9 +71,9 @@ Dashboard that visualizes general node health metrics for cluster-master and clu
 
 My python script for fetching Nordnet account data such as transactions and performance graph data, and store the data in GCP BigQuery. The script will be deployed in the cluster as a CronJob that runs daily.
 
-### Pi-Hole
+### discord-alerthandler
 
-Network service that will act as DNS server in my local network. Pi-Hole provides capabilities such as network-wide blocking of ads, telemetry and malware by rerouting network traffic.
+Simple Discord alerter I wrote in go. It is registered as as a webhook receiver in the Prometheus AlertManager. When Prometheus fires a new alert, the alerter generates a Discord embed with the alert and sends it to my Discord monitoring channel
 
 ## Setup
 
