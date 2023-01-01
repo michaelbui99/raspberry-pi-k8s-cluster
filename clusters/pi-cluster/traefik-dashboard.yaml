@@ -26,6 +26,7 @@ metadata:
         kubernetes.io/ingress.class: traefik
         traefik.ingress.kubernetes.io/router.middlewares: kube-system-stripprefix@kubernetescrd
 spec:
+    ingressClassName: traefik
     rules:
         - http:
               paths:
