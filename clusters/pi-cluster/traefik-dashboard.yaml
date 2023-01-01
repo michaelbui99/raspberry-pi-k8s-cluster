@@ -26,10 +26,10 @@ metadata:
         kubernetes.io/ingress.class: traefik
 spec:
     rules:
-        - host: traefik.cluster-worker01
+        - host: cluster-worker01
           http:
               paths:
-                  - path: /
+                  - path: /traefik
                     pathType: Prefix
                     backend:
                         service:
