@@ -40,6 +40,6 @@ spec:
                     - name: "discord"
                       webhook_configs:
                           - send_resolved: true
-                            url: "http://discord-alerthandler"
+                            url: "http://discord-alerthandler-service"
 
     interval: 30m0s
