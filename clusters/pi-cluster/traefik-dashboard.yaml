@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-    name: traefik-dashboard
+    name: traefik-dashboard-service
     namespace: kube-system
     labels:
         app.kubernetes.io/instance: traefik
@@ -30,13 +30,18 @@ spec:
     rules:
         - http:
               paths:
-                  - path: /traefik
-                    pathType: Prefix
-                    backend:
+                  - backend:
                         service:
-                            name: traefik-dashboard
+                            name: traefik-dashboard-service
                             port:
                                 number: 9000
+                    path: /traefik
+                    pathType: Prefix
+status:
+    loadBalancer:
+        ingress:
+            - ip: 192.168.87.111
+            - ip: 192.168.87.116
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
@@ -45,6 +50,5 @@ metadata:
     namespace: kube-system
 spec:
     stripPrefix:
-        forceSlash: false
         prefixes:
             - /traefik
