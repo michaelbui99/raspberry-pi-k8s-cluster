@@ -26,7 +26,7 @@ metadata:
         kubernetes.io/ingress.class: traefik
 spec:
     rules:
-        - host: traefik.${DOMAIN}
+        - host: traefik.cluster-worker01
           http:
               paths:
                   - path: /
