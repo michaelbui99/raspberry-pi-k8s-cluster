@@ -37,6 +37,14 @@ spec:
                                 number: 9000
                     path: /traefik
                     pathType: Prefix
+
+                  - backend:
+                        service:
+                            name: traefik-dashboard-service
+                            port:
+                                number: 9000
+                    path: /traefik/dashboard
+                    pathType: Prefix
 status:
     loadBalancer:
         ingress:
