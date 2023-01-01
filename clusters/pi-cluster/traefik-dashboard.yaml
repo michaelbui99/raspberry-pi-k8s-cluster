@@ -36,3 +36,13 @@ spec:
                             name: traefik-dashboard
                             port:
                                 number: 9000
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+    name: traefik-dashboard-redirect
+    namespace: kube-system
+spec:
+    redirectRegex:
+        regex: http:\/\/[^]+\/traefik
+        replacement: http://traefik-dashboard/dashboard/
