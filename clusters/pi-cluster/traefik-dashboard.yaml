@@ -24,8 +24,8 @@ metadata:
     namespace: kube-system
     annotations:
         kubernetes.io/ingress.class: traefik
+        traefik.ingress.kubernetes.io/router.middlewares: kube-system-traefik-strip-prefix@kubernetescrd
 spec:
-    ingressClassName: traefik
     rules:
         - http:
               paths:
@@ -40,9 +40,10 @@ spec:
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
-    name: traefik-dashboard-redirect
+    name: traefik-strip-prefix
     namespace: kube-system
 spec:
-    redirectRegex:
-        regex: http:\/\/[^]+\/traefik
-        replacement: http://traefik-dashboard/dashboard/
+    stripPrefix:
+        forceSlash: false
+        prefixes:
+            - /traefik
