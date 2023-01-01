@@ -43,7 +43,7 @@ spec:
                             name: traefik-dashboard-service
                             port:
                                 number: 9000
-                    path: /traefik/dashboard
+                    path: /api
                     pathType: Prefix
 status:
     loadBalancer:
