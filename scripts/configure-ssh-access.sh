@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 
 skip=false
 read -p "Cluster node user: " user
