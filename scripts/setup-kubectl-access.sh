@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 
 read -p "Cluster master user: " user
 read -p "Cluster master ip: " ip
